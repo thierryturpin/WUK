@@ -3,3 +3,5 @@ if [[ ! -d /home/hadoop/sparkscripts ]]
 then
     mkdir /home/hadoop/sparkscripts
 fi
+
+sudo /usr/bin/pip-3.6 install -r /home/hadoop/sparkscripts/csv_to_parquet.requirements

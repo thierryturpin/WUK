@@ -38,3 +38,6 @@ aws emr add-steps --cluster-id j-2R3BUMC1WY7G2 \
 
 ```
 
+## To debug:  
+```bash
+[hadoop@ip-10-30-1-68 DiDi]$ yarn logs -applicationId application_1516525003387_0014
