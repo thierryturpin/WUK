@@ -48,6 +48,9 @@ if __name__ == '__main__':
     logging.info('################################################--START--################################################')
     logging.info('PID: {}'.format(os.getpid()))
 
+    print('################################################--START--################################################')
+    print('PID: {}'.format(os.getpid()))
+
     with open(get_param('conf_file')) as configfile:
         configdata = yaml.load(configfile)
 
