@@ -30,6 +30,7 @@ def set_logging():
                         level=logging.INFO,
                         format='[%(asctime)s] - %(message)s',
                         datefmt='%Y-%m-%dT%H:%M:%S')
+    logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
 
 def get_param(param):
     parser = argparse.ArgumentParser(description='DiDi2')
