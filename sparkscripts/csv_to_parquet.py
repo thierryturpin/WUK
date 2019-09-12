@@ -2,6 +2,7 @@
 import boto3
 import argparse
 import os
+import sys
 import logging
 import yaml
 from pyspark.sql.types import *
@@ -48,9 +49,6 @@ if __name__ == '__main__':
     set_logging()
     logging.info('################################################--START--################################################')
     logging.info('PID: {}'.format(os.getpid()))
-
-    print('################################################--START--################################################')
-    print('PID: {}'.format(os.getpid()))
 
     with open(get_param('conf_file')) as configfile:
         configdata = yaml.load(configfile)
