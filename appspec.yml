@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+files:
+  - source: /sparkscripts
+    destination: /home/hadoop/sparkscripts
+permissions:
+  - object: /home/hadoop/sparkscripts
+    owner: hadoop
+    group: hadoop
+    mode: 775
+    type:
+      - directory
+hooks:
+  BeforeInstall:
+    - location: scripts/install_dependencies
+      timeout: 300
+      runas: hadoop
+
+

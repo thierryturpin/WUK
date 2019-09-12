@@ -1,0 +1,5 @@
+#!/bin/bash
+if [[ ! -d /home/hadoop/sparkscripts ]]
+then
+    mkdir /home/hadoop/sparkscripts
+fi
