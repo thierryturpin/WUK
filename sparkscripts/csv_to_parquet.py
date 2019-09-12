@@ -1,5 +1,4 @@
 # -*- coding: UTF-8 -*-
-import boto3
 import argparse
 import os
 import logging
