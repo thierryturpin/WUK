@@ -13,4 +13,18 @@ echo 'Starting install of codedeploy'
 
 sudo ./install auto
 
-echo 'bootstrap done'
+echo 'Install of codedeploy done'
+
+
+# check for master node
+IS_MASTER=true
+if [ -f /mnt/var/lib/info/instance.json ]
+then
+	IS_MASTER=`cat /mnt/var/lib/info/instance.json | jq -c '.isMaster'`
+fi
+
+# only run if master node
+if [ "$IS_MASTER" = true ]; then
+    echo 'Running on master node'
+
+fi
