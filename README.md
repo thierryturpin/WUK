@@ -33,7 +33,7 @@ aws codepipeline get-pipeline-state --name wuk | jq -c '.stageStates[] | select(
 Add step to cluster
 
 ```bash
-aws emr add-steps --cluster-id j-6LKO44RUD2G4 \
+aws emr add-steps --cluster-id j-2R3BUMC1WY7G2 \
                   --steps Type=Spark,Name="csv_to_parquet",ActionOnFailure=CONTINUE,Args=[--deploy-mode,cluster,--conf,spark.yarn.appMasterEnv.PYSPARK_PYTHON=python36,--conf,spark.executorEnv.PYSPARK_PYTHON=python36,/home/hadoop/sparkscripts/csv_to_parquet.py,-cs3n://dih2018/extract_audiences.csv,-d/home/hadoop/sparkscripts/csv_to_parquet.yml]
 
 ```
