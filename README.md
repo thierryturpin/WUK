@@ -41,7 +41,7 @@ Add step to cluster
 
 ```bash
 aws emr add-steps --cluster-id $myEMR \
-                  --steps Type=Spark,Name="csv_to_parquet",ActionOnFailure=CONTINUE,Args=[--deploy-mode,cluster,--conf,spark.yarn.appMasterEnv.PYSPARK_PYTHON=python36,--conf,spark.executorEnv.PYSPARK_PYTHON=python36,/home/hadoop/sparkscripts/csv_to_parquet.py,-cs3n://dih2018/extract_audiences.csv,-d/home/hadoop/sparkscripts/csv_to_parquet.yml]
+                  --steps Type=Spark,Name="csv_to_parquet",ActionOnFailure=CONTINUE,Args=[--deploy-mode,cluster,--conf,spark.yarn.appMasterEnv.PYSPARK_PYTHON=python36,--conf,spark.executorEnv.PYSPARK_PYTHON=python36,/home/hadoop/sparkscripts/csv_to_parquet_ref.py,-cs3n://dih2018/extract_audiences.csv,-d/home/hadoop/sparkscripts/csv_to_parquet.yml]
 
 ```
 

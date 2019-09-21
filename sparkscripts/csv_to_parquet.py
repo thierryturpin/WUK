@@ -85,6 +85,8 @@ if __name__ == '__main__':
 
     result_file.write.parquet(parquet_file, mode='overwrite', compression='none')
 
+    logging.info('Result persited in file: {}'.format(parquet_file))
+
 
     spark.stop()
     logging.info('################################################---END---################################################')
