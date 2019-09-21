@@ -49,7 +49,7 @@ def persist_results(result_file, csv_file):
     parquet_file = parquet_file.replace('IN', 'OUT')
 
     result_file.write.parquet(parquet_file, mode='overwrite', compression='none')
-
+    logging.info('Result persited in file: {}'.format(parquet_file))
 
 def handle_main(spark, csv_file):
     sample_file = spark.read.csv(csv_file,
