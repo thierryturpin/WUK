@@ -17,6 +17,8 @@ myEMR="$(aws emr create-cluster --auto-scaling-role EMR_AutoScaling_DefaultRole 
                        --region eu-west-1 \
                        --bootstrap-action Path="s3://micropoledih/emr_bootstrap_codepipeline.sh" | jq -r ".ClusterId" )"; echo $myEMR
 
+watch -d "aws emr describe-cluster --cluster-id $myEMR | jq -r ".Cluster.Status.State""
+
 ```
 
 For a new cluster trigger the code deploy
@@ -40,6 +42,12 @@ Add step to cluster
 ```bash
 aws emr add-steps --cluster-id $myEMR \
                   --steps Type=Spark,Name="csv_to_parquet",ActionOnFailure=CONTINUE,Args=[--deploy-mode,cluster,--conf,spark.yarn.appMasterEnv.PYSPARK_PYTHON=python36,--conf,spark.executorEnv.PYSPARK_PYTHON=python36,/home/hadoop/sparkscripts/csv_to_parquet.py,-cs3n://dih2018/extract_audiences.csv,-d/home/hadoop/sparkscripts/csv_to_parquet.yml]
+
+```
+
+Spark-submit
+```
+spark-submit --deploy-mode cluster --conf spark.yarn.appMasterEnv.PYSPARK_PYTHON=python34 --conf spark.executorEnv.PYSPARK_PYTHON=python34 /Users/thierryturpin/PycharmProjects/WUK/sparkscripts/csv_to_parquet.py -c s3://micropoledih/DiDi.yml
 
 ```
 
