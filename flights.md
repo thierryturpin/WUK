@@ -45,6 +45,6 @@ create table flights_prq stored as parquet as select * from flights_csv;
 ## Start Spark Thirft server
 ```
 cd /usr/lib/spark/sbin
-sudo ./start-thriftserver.sh --master yarn-client --executor-memory 20g
+sudo ./start-thriftserver.sh --master yarn-client --executor-memory 10g
 ```
 
