@@ -9,12 +9,12 @@ from pyspark.sql.types import *
 from pyspark.sql.functions import udf
 from pyspark.sql import SparkSession
 
-def mask_func(mask_value):
+
+def mask_func(mask_value, mask_ratio):
     masked_value = mask_value * mask_ratio
     return masked_value
 
 mask_udf = udf(mask_func, LongType())
-
 
 def set_validate_env():
     SPARK_HOME = os.environ.get('SPARK_HOME', None)
@@ -51,7 +51,7 @@ def persist_results(result_file, csv_file):
     result_file.write.parquet(parquet_file, mode='overwrite', compression='none')
     logging.info('Result persited in file: {}'.format(parquet_file))
 
-def handle_main(spark, csv_file):
+def handle_main(spark, csv_file, mask_ratio):
     sample_file = spark.read.csv(csv_file,
                                  header=True,
                                  sep=';',
@@ -60,13 +60,12 @@ def handle_main(spark, csv_file):
 
     logging.info('Number of lines in file: {}'.format(sample_file.count()))
 
-    result_file = sample_file.select('timeslot', 'dvbtriplet', mask_udf('telespectateurs').alias('telespectateurs'),
+    result_file = sample_file.select('timeslot', 'dvbtriplet', mask_udf('telespectateurs', mask_ratio).alias('telespectateurs'),
                                      'eventdatekey')
 
     persist_results(result_file, csv_file)
 
 if __name__ == '__main__':
-    global mask_ratio
 
     set_logging()
     logging.info('################################################--START--################################################')
@@ -90,7 +89,7 @@ if __name__ == '__main__':
     logging.info('Spark master: {}'.format(spark.sparkContext.master))
     logging.info('Invoked with configuration file: {}'.format(get_param('conf_file')))
 
-    handle_main(spark, csv_file)
+    handle_main(spark, csv_file, mask_ratio)
 
     spark.stop()
     logging.info('################################################---END---################################################')

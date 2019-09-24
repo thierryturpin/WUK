@@ -1,7 +1,8 @@
 
-## Create Hive external table
+## Create Hive external table (before loading data to HDFS)
 
 With the hive client
+
 ```
 create table flights_csv (
  Year INT,
@@ -45,6 +46,15 @@ create table flights_prq stored as parquet as select * from flights_csv;
 ## Start Spark Thirft server
 ```
 cd /usr/lib/spark/sbin
-sudo ./start-thriftserver.sh --master yarn-client --executor-memory 10g
+sudo ./start-thriftserver.sh --master yarn-client 
+```
+
+## Start beeline
+
+# to-do make query before cache and after cache and compare
+
+```
+!connect jdbc:hive2://localhost:10001
+cache table flights_prq;
 ```
 
