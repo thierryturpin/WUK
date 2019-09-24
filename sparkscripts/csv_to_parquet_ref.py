@@ -6,7 +6,7 @@ import sys
 import logging
 import yaml
 from pyspark.sql.types import *
-from pyspark.sql.functions import udf
+from pyspark.sql.functions import udf, lit
 from pyspark.sql import SparkSession
 
 
@@ -60,7 +60,7 @@ def handle_main(spark, csv_file, mask_ratio):
 
     logging.info('Number of lines in file: {}'.format(sample_file.count()))
 
-    result_file = sample_file.select('timeslot', 'dvbtriplet', mask_udf('telespectateurs', mask_ratio).alias('telespectateurs'),
+    result_file = sample_file.select('timeslot', 'dvbtriplet', mask_udf('telespectateurs', lit(mask_ratio)).alias('telespectateurs'),
                                      'eventdatekey')
 
     persist_results(result_file, csv_file)
