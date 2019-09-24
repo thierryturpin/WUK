@@ -4,7 +4,7 @@ files:
   - source: /sparkscripts
     destination: /home/hadoop/sparkscripts
   - source: /scripts
-    destination: /home/hadoop/cripts
+    destination: /home/hadoop/scripts
 permissions:
   - object: /home/hadoop/sparkscripts
     owner: hadoop

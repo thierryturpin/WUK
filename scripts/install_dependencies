@@ -3,3 +3,8 @@ if [[ ! -d /home/hadoop/sparkscripts ]]
 then
     mkdir /home/hadoop/sparkscripts
 fi
+
+if [[ ! -d /home/hadoop/scripts ]]
+then
+    mkdir /home/hadoop/scripts
+fi
