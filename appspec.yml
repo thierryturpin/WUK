@@ -5,6 +5,8 @@ files:
     destination: /home/hadoop/sparkscripts
   - source: /scripts
     destination: /home/hadoop/scripts
+  - source: /tests
+    destination: /home/hadoop/tests
 permissions:
   - object: /home/hadoop/sparkscripts
     owner: hadoop
@@ -13,6 +15,12 @@ permissions:
     type:
       - directory
   - object: /home/hadoop/scripts
+    owner: hadoop
+    group: hadoop
+    mode: 775
+    type:
+      - directory
+  - object: /home/hadoop/tests
     owner: hadoop
     group: hadoop
     mode: 775
