@@ -23,6 +23,9 @@ hooks:
     - location: scripts/install_dependencies
       timeout: 300
       runas: hadoop
+    - location: scripts/run_tests
+      timeout: 300
+      runas: hadoop
   AfterInstall:
     - location: scripts/install_libs
       timeout: 300

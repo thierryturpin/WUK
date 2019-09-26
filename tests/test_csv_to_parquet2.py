@@ -8,9 +8,6 @@ import logging
 class MyTest(unittest.TestCase):
     def test(self):
 
-        logger = logging.getLogger('py4j')
-        logger.setLevel(logging.WARN)
-
         mask_ratio = 2
 
         spark = SparkSession.builder.appName("csv_to_parquet_test").getOrCreate()

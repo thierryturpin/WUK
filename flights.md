@@ -46,7 +46,7 @@ create table flights_prq stored as parquet as select * from flights_csv;
 ## Start Spark Thirft server
 ```
 cd /usr/lib/spark/sbin
-sudo ./start-thriftserver.sh --master yarn-client 
+sudo /usr/lib/spark/sbin/start-thriftserver.sh --master yarn-client 
 ```
 
 ## Start beeline
@@ -55,6 +55,7 @@ sudo ./start-thriftserver.sh --master yarn-client
 
 ```
 !connect jdbc:hive2://localhost:10001
+select count(*) as count, year, origin from flights_prq where origin = 'ORD' group by year, origin;
 cache table flights_prq;
 ```
 

@@ -13,7 +13,7 @@ myEMR="$(aws emr create-cluster --auto-scaling-role EMR_AutoScaling_DefaultRole 
                        --release-label emr-5.26.0 \
                        --log-uri 's3n://aws-logs-662050823481-eu-west-1/elasticmapreduce/' \
                        --name 'EMR1' \
-                       --instance-groups '[{"InstanceCount":1,"InstanceGroupType":"MASTER","InstanceType":"c5.2xlarge","Name":"Master - 1"},{"InstanceCount":4,"InstanceGroupType":"CORE","InstanceType":"c5.2xlarge","Name":"Core - 4"}]' \
+                       --instance-groups '[{"InstanceCount":1,"InstanceGroupType":"MASTER","InstanceType":"c5.2xlarge","Name":"Master - 1"},{"InstanceCount":2,"InstanceGroupType":"CORE","InstanceType":"c5.2xlarge","Name":"Core - 2"}]' \
                        --region eu-west-1 \
                        --bootstrap-action Path="s3://micropoledih/emr_bootstrap_codepipeline.sh" | jq -r ".ClusterId" )"; echo $myEMR
 
