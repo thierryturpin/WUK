@@ -8,7 +8,7 @@ import logging
 class MyTest(unittest.TestCase):
     def test(self):
 
-        mask_ratio = 3
+        mask_ratio = 2
 
         spark = SparkSession.builder.appName("csv_to_parquet_test").getOrCreate()
 
