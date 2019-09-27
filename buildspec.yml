@@ -2,6 +2,10 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo Entered the install phase...
+      - pip3 install -r sparkscripts/csv_to_parquet.requirements
   build:
     commands:
       - echo Entered the build phase...
