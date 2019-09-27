@@ -1,8 +1,6 @@
-# WUK
-Demo EMR and codepipeline 
+# WUK Demo EMR and codepipeline 
 
 ![CodeBuild badge](https://codebuild.eu-west-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiSVNrcWorUUpmeFZqbmxMZHRTYzJWSnhrNndDQkJsYURET3RjczJoeVU5SDZLVHF3dmtxdkZ1OGgyVENoRUVlNlM1elNjM3dPdTlrb2JtYW5oWExQZFRnPSIsIml2UGFyYW1ldGVyU3BlYyI6IlhKU1UxOGpyMW1ITm1oL2QiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=qual)
-
 
 Not using the `--auto-terminate \`  
 
