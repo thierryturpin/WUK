@@ -2,16 +2,6 @@
 version: 0.2
 
 phases:
-  install:
-    commands:
-      - echo Entered the install phase...
-    finally:
-      - echo This always runs even if the update or install command fails
-  pre_build:
-    commands:
-      - echo Entered the pre_build phase...
-    finally:
-      - echo This always runs even if the login command fails
   build:
     commands:
       - echo Entered the build phase...
@@ -24,4 +14,4 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - README.md
+    - '**/*'
