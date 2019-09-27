@@ -1,7 +1,5 @@
 # WUK
-demo EMR and codepipeline
-
-https://codebuild.eu-west-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiSVNrcWorUUpmeFZqbmxMZHRTYzJWSnhrNndDQkJsYURET3RjczJoeVU5SDZLVHF3dmtxdkZ1OGgyVENoRUVlNlM1elNjM3dPdTlrb2JtYW5oWExQZFRnPSIsIml2UGFyYW1ldGVyU3BlYyI6IlhKU1UxOGpyMW1ITm1oL2QiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master
+demo EMR and codepipeline [build status](https://codebuild.eu-west-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiSVNrcWorUUpmeFZqbmxMZHRTYzJWSnhrNndDQkJsYURET3RjczJoeVU5SDZLVHF3dmtxdkZ1OGgyVENoRUVlNlM1elNjM3dPdTlrb2JtYW5oWExQZFRnPSIsIml2UGFyYW1ldGVyU3BlYyI6IlhKU1UxOGpyMW1ITm1oL2QiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 
 
 Not using the `--auto-terminate \`  
