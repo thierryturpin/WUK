@@ -7,6 +7,10 @@ import logging
 
 class MyTest(unittest.TestCase):
     def test(self):
+        """
+        Testing the mask function.
+        Single record dataframe test.
+        """
 
         mask_ratio = 2
 
@@ -18,7 +22,7 @@ class MyTest(unittest.TestCase):
         result_file = sample_file.select('timeslot', 'dvbtriplet', mask_udf('telespectateurs', lit(mask_ratio)).alias('telespectateurs'),
                                          'eventdatekey')
 
-        expected_result_file = spark.createDataFrame([('2018-05-31 00:00:00', '1:101:10104', 4, '20180601')],
+        expected_result_file = spark.createDataFrame([('2018-05-31 00:00:00', '1:101:10104', 6, '20180601')],
                                             ["timeslot", "dvbtriplet", "telespectateurs", "eventdatekey"])
 
         pd_result_file = result_file.toPandas()
