@@ -14,7 +14,9 @@ def mask_func(mask_value, mask_ratio):
     masked_value = mask_value * mask_ratio
     return masked_value
 
+
 mask_udf = udf(mask_func, LongType())
+
 
 def set_validate_env():
     SPARK_HOME = os.environ.get('SPARK_HOME', None)
@@ -33,6 +35,7 @@ def set_logging():
                         datefmt='%Y-%m-%dT%H:%M:%S')
     logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
 
+
 def get_param(param):
     parser = argparse.ArgumentParser(description='DiDi2')
     parser.add_argument('-c', dest='csv_file', required=True)
@@ -43,6 +46,7 @@ def get_param(param):
     elif param == 'conf_file':
         return args.conf_file
 
+
 def persist_results(result_file, csv_file):
     parquet_file = csv_file + '.prq'
     parquet_file = parquet_file.replace('*', '__WILDCARD__')
@@ -50,6 +54,7 @@ def persist_results(result_file, csv_file):
 
     result_file.write.parquet(parquet_file, mode='overwrite', compression='none')
     logging.info('Result persited in file: {}'.format(parquet_file))
+
 
 def handle_main(spark, csv_file, mask_ratio):
     sample_file = spark.read.csv(csv_file,
@@ -60,15 +65,17 @@ def handle_main(spark, csv_file, mask_ratio):
 
     logging.info('Number of lines in file: {}'.format(sample_file.count()))
 
-    result_file = sample_file.select('timeslot', 'dvbtriplet', mask_udf('telespectateurs', lit(mask_ratio)).alias('telespectateurs'),
+    result_file = sample_file.select('timeslot', 'dvbtriplet',
+                                     mask_udf('telespectateurs', lit(mask_ratio)).alias('telespectateurs'),
                                      'eventdatekey')
 
     persist_results(result_file, csv_file)
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     set_logging()
-    logging.info('################################################--START--################################################')
+    logging.info(
+        '################################################--START--################################################')
     logging.info('PID: {}'.format(os.getpid()))
 
     with open(get_param('conf_file')) as configfile:
@@ -92,4 +99,5 @@ if __name__ == '__main__':
     handle_main(spark, csv_file, mask_ratio)
 
     spark.stop()
-    logging.info('################################################---END---################################################')
+    logging.info(
+        '################################################---END---################################################')

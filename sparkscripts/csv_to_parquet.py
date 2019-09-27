@@ -9,9 +9,11 @@ from pyspark.sql.types import *
 from pyspark.sql.functions import udf
 from pyspark.sql import SparkSession
 
+
 def mask_func(mask_value):
     masked_value = mask_value * mask_ratio
     return masked_value
+
 
 mask_udf = udf(mask_func, LongType())
 
@@ -33,6 +35,7 @@ def set_logging():
                         datefmt='%Y-%m-%dT%H:%M:%S')
     logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
 
+
 def get_param(param):
     parser = argparse.ArgumentParser(description='DiDi2')
     parser.add_argument('-c', dest='csv_file', required=True)
@@ -43,11 +46,13 @@ def get_param(param):
     elif param == 'conf_file':
         return args.conf_file
 
+
 if __name__ == '__main__':
     global mask_ratio
 
     set_logging()
-    logging.info('################################################--START--################################################')
+    logging.info(
+        '################################################--START--################################################')
     logging.info('PID: {}'.format(os.getpid()))
 
     with open(get_param('conf_file')) as configfile:
@@ -87,6 +92,6 @@ if __name__ == '__main__':
 
     logging.info('Result persited in file: {}'.format(parquet_file))
 
-
     spark.stop()
-    logging.info('################################################---END---################################################')
+    logging.info(
+        '################################################---END---################################################')
