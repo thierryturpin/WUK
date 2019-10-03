@@ -13,7 +13,7 @@ class MyTest(unittest.TestCase):
         Single record dataframe test.
         """
 
-        mask_ratio = 3
+        mask_ratio = 2
 
         spark = SparkSession.builder.appName("csv_to_parquet_test").getOrCreate()
 
