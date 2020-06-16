@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo /usr/bin/pip-3.6 install -r /home/hadoop/sparkscripts/csv_to_parquet.requirements
+sudo /usr/bin/pip-3.7 install -r /home/hadoop/sparkscripts/csv_to_parquet.requirements

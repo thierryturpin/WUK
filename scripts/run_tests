@@ -1,4 +1,4 @@
 #!/bin/bash
-export PYSPARK_PYTHON=python36
+export PYSPARK_PYTHON=python37
 cd /home/hadoop/
 python3 -m unittest discover -s tests
