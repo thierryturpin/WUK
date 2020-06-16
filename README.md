@@ -11,7 +11,7 @@ myEMR="$(aws emr create-cluster --auto-scaling-role EMR_AutoScaling_DefaultRole 
                        --ec2-attributes '{"KeyName":"thierryturpin","InstanceProfile":"EMR_EC2_DefaultRole","ServiceAccessSecurityGroup":"sg-cb4309af","SubnetId":"subnet-c167d1a4","EmrManagedSlaveSecurityGroup":"sg-ca4309ae","EmrManagedMasterSecurityGroup":"sg-c94309ad"}' \
                        --service-role EMR_DefaultRole \
                        --enable-debugging \
-                       --release-label emr-5.27.0 \
+                       --release-label emr-5.30.0 \
                        --log-uri 's3n://aws-logs-662050823481-eu-west-1/elasticmapreduce/' \
                        --name 'EMR1' \
                        --instance-groups '[{"InstanceCount":1,"InstanceGroupType":"MASTER","InstanceType":"c5.2xlarge","Name":"Master - 1"},{"InstanceCount":2,"InstanceGroupType":"CORE","InstanceType":"c5.2xlarge","Name":"Core - 2"}]' \
