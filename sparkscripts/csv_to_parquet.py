@@ -54,6 +54,7 @@ if __name__ == '__main__':
     logging.info(
         '################################################--START--################################################')
     logging.info('PID: {}'.format(os.getpid()))
+    logging.info('PySpakr script for TT')
 
     with open(get_param('conf_file')) as configfile:
         configdata = yaml.load(configfile)
