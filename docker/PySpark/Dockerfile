@@ -21,3 +21,5 @@ RUN pip3 install pypandoc
 RUN pip3 install pyspark
 
 RUN python3 -c "import numpy as np"
+
+ENTRYPOINT ["/bin/bash"]
