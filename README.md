@@ -58,7 +58,7 @@ spark-submit --deploy-mode cluster --conf spark.yarn.appMasterEnv.PYSPARK_PYTHON
 ## To debug
 ```bash
 yarn logs -applicationId application_1516525003387_0014
-``
+```
 
 ## Starting the Spark thrift server
 ```
