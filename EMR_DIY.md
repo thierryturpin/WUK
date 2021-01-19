@@ -6,7 +6,7 @@ ec2="i-038fb5e2df183ce42" # WUK
 aws ssm start-session --target $ec2 --profile=micropole --region=eu-west-1
 ```
 
-Create your user
+Create your OS user
 ```
 sudo su - ec2-user
 sudo adduser thierryturpin
@@ -29,7 +29,9 @@ Create your feature branch
 git checkout -b feature-workshop-thierryturpin
 ```
 
-Edit the pyspark scripts & verify the GIT status
+Create your PySpark script
+
+Verify all your modified scripts and stage your work
 ```
 git status
 ```
@@ -62,6 +64,29 @@ thierryturpin/WUK       qual        <--     MicropleBelgium/WUK     <<your featu
 
 ![open_pull_request](img/open_pull_request.png)
 
-Submit and EMR step using AWS CLI
+After your work is merged into the qual branch of thierryturpin/WUK codepipeline is triggered, and your work is promoted to the EMR cluster
+
+**note** Codepiline mentions the **Source** this should reference your work
+![code_pipeline](img/code_pipeline.png)
+
+## Submit and EMR step using AWS CLI
 ...
+
+modify the following statement so that:
+* your script is used under: `/home/hadoop/sparkscripts/`
+* your name is included in the step name
+
+```bash
+aws emr add-steps --cluster-id $myEMR --profile=micropole --region=eu-west-1\
+                  --steps Type=Spark,\
+                    Name="<<your_name>>__myPysparkscript", \
+                    ActionOnFailure=CONTINUE, \
+                    Args=[--deploy-mode,cluster,--conf,spark.yarn.appMasterEnv.PYSPARK_PYTHON=python3.7,--conf,spark.executorEnv.PYSPARK_PYTHON=python3.7,/home/hadoop/sparkscripts/<<your_python_script>>.py,-cs3n://dih2018/extract_audiences.csv,-d/home/hadoop/sparkscripts/csv_to_parquet.yml]
+
+```
+
+Verify the execution of your PySpark job executed on EMR  
+* in the AWS console
+* via the Yarn logs
+
 
