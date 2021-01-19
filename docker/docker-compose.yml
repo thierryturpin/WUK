@@ -1,0 +1,9 @@
+version: '2.1'
+services:
+    pyspark:
+        image: mypyspark
+        ports:
+            - "4040:4040"
+        tty: true
+        volumes:
+        - ../raw_tweets.txt:/opt/raw_tweets.json
