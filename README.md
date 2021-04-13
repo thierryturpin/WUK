@@ -44,8 +44,14 @@ watch -d "aws emr describe-cluster --cluster-id $myEMR --region=eu-west-1 --prof
 Add step to cluster
 
 ```bash
-aws emr add-steps --cluster-id $myEMR --profile=micropole --region=eu-west-1\
-                  --steps 'Type=Spark,Name="csv_to_parquet",Args=[--deploy-mode,cluster,--master,yarn,/home/hadoop/sparkscripts/csv_to_parquet_ref.py,-cs3://dih2018/extract_audiences.csv,-d/home/hadoop/sparkscripts/csv_to_parquet.yml]'
+user=ref
+
+aws emr add-steps \
+  --cluster-id $myEMR --profile=micropole --region=eu-west-1\
+  --steps "Type=Spark,Name="csv_to_parquet_$user",Args=[--deploy-mode,cluster,--master,yarn,
+                 /home/hadoop/sparkscripts/csv_to_parquet_$user.py, 
+                 -cs3://dih2018/extract_audiences.csv, 
+                 -d/home/hadoop/sparkscripts/csv_to_parquet.yml]"
 
 ```
 
@@ -60,6 +66,10 @@ yarn logs -applicationId application_1516525003387_0014
 ```
 
 ## Starting the Spark thrift server
+see flights.md
+
+## HDFS 
+check file split
 ```
-sudo /usr/lib/spark/sbin/start-thriftserver.sh
+hdfs fsck /user/hadoop/csv/2000.csv -files -blocks -locations
 ```
