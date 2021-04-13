@@ -35,8 +35,8 @@ hooks:
     - location: scripts/install_libs
       timeout: 300
       runas: hadoop
-  ValidateService:
-    - location: scripts/run_tests
-      timeout: 300
-      runas: hadoop
+#  ValidateService:
+#    - location: scripts/run_tests
+#      timeout: 300
+#      runas: hadoop
 
