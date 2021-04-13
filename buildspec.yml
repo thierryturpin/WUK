@@ -9,6 +9,7 @@ phases:
   build:
     commands:
       - echo Entered the build phase...
+      - export PYSPARK_PYTHON=python3.7
       - python3 -m unittest discover -s tests
       - echo Build started on `date`
     finally:

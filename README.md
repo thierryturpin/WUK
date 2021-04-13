@@ -45,18 +45,13 @@ Add step to cluster
 
 ```bash
 aws emr add-steps --cluster-id $myEMR --profile=micropole --region=eu-west-1\
-                  --steps 'Type=Spark,Name="csv_to_parquet",ActionOnFailure=CONTINUE,Args=[--conf,spark.yarn.appMasterEnv.PYSPARK_PYTHON=python3.7,--conf,spark.executorEnv.PYSPARK_PYTHON=python3.7,/home/hadoop/sparkscripts/csv_to_parquet_ref.py,-cs3n://dih2018/extract_audiences.csv,-d/home/hadoop/sparkscripts/csv_to_parquet.yml]'
-
-
-aws emr add-steps --cluster-id $myEMR --profile=micropole --region=eu-west-1\
-                  --steps 'Type=Spark,Name="csv_to_parquet",Args=[--deploy-mode,cluster,--master,yarn,/home/hadoop/sparkscripts/csv_to_parquet_ref.py,-cs3n://dih2018/extract_audiences.csv,-d/home/hadoop/sparkscripts/csv_to_parquet.yml]'
+                  --steps 'Type=Spark,Name="csv_to_parquet",Args=[--deploy-mode,cluster,--master,yarn,/home/hadoop/sparkscripts/csv_to_parquet_ref.py,-cs3://dih2018/extract_audiences.csv,-d/home/hadoop/sparkscripts/csv_to_parquet.yml]'
 
 ```
 
 Spark-submit
 ```
-spark-submit --deploy-mode cluster --conf spark.yarn.appMasterEnv.PYSPARK_PYTHON=python3.7 --conf spark.executorEnv.PYSPARK_PYTHON=python3.7 /Users/thierryturpin/PycharmProjects/WUK/sparkscripts/csv_to_parquet.py -c s3://micropoledih/DiDi.yml
-
+spark-submit --deploy-mode cluster --master yarn /home/hadoop/sparkscripts/csv_to_parquet_ref.py -cs3://dih2018/extract_audiences.csv -d/home/hadoop/sparkscripts/csv_to_parquet.yml
 ```
 
 ## To debug
