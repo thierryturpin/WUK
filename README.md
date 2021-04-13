@@ -63,3 +63,4 @@ yarn logs -applicationId application_1516525003387_0014
 ```
 sudo /usr/lib/spark/sbin/start-thriftserver.sh
 ```
+
