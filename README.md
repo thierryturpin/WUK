@@ -44,7 +44,7 @@ watch -d "aws emr describe-cluster --cluster-id $myEMR --region=eu-west-1 --prof
 Add step to cluster
 
 ```bash
-user=ref
+user=bgrunenberger
 
 aws emr add-steps \
   --cluster-id $myEMR --profile=micropole --region=eu-west-1\
