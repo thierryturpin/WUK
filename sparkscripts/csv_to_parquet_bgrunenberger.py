@@ -48,7 +48,7 @@ def get_param(param):
 
 
 def persist_results(result_file, csv_file):
-    parquet_file = csv_file + 'thierryturpin' +'.prq'
+    parquet_file = csv_file + '_bgrunenberger' + '.prq'
     parquet_file = parquet_file.replace('*', '__WILDCARD__')
     parquet_file = parquet_file.replace('IN', 'OUT')
 
